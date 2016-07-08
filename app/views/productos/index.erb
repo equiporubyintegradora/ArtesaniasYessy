@@ -1,0 +1,49 @@
+<div class="container">
+<h1>Lista de Productos </h1>
+<div class="well">
+  <%= link_to 'Nuevo Producto', new_producto_path, class:'btn btn-success btn-sm' %>
+
+<% if !@producto.blank? %>
+    <table border="2" class="table table-bordered">
+      <tr>
+        <th>Producto</th>
+        <th>Forografia</th>
+        <th colspan="2">Descripcion</th>
+        <th>Tamaño</th>
+        <th>Diseño</th>
+        <th>Precio</th>
+        <th>Existencia</th>
+        <th>Categoria</th>
+        <th>Precio de Mayoreo</th>
+        <th>Piezas de Mayoreo</th>
+        <th>Precio de Menudeo</th>
+        <th>Piezas de Menudeo</th>
+      </tr>
+
+      <% @producto.each do |p| %>
+          <tr>
+            <td><%= p.producto %></td>
+            <td><%= image_tag p.fotografia.thumb.url,  class:'img-responsive img-thumbnail' if p.fotografia.present?%></td>
+            <td colspan="2"><%= p.descripcion %></td>
+            <td><%= p.tamano %></td>
+            <td><%= p.diseno %></td>
+            <td><%= p.precio %></td>
+            <td><%= p.existencia %></td>
+            <td><%= p.categoria %></td>
+            <td><%= p.preciomayoreo %></td>
+            <td><%= p.piezasmayoreo %></td>
+            <td><%= p.preciomenudeo %></td>
+            <td><%= p.piezasmenudeo %></td>
+            <td><%= link_to 'Ver', producto_path(p),  class:'btn btn-info btn-sm' %></td>
+            <td><%= link_to 'Modificar', edit_producto_path(p),  class:'btn btn-warning btn-sm' %></td>
+            <td><%= link_to 'Borrar', producto_path(p), class:'btn btn-danger btn-sm',
+                            method: :delete,  data: { confirm: '¿Seguro que desea eliminar este producto?' } %></td>      </tr>
+      <% end %>
+    </table>
+<% else %>
+    <br/>
+    <h3>No hay registros</h3>
+    <br/>
+<% end %>
+  </div>
+</div>

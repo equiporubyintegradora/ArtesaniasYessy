@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Ver Empleado</h1>
+  <div class="well">
+    <p>
+      <strong>Nombre:</strong>
+      <%= @empleado.name %>
+    </p>
+    <p>
+      <strong>Apellidos:</strong>
+      <%= @empleado.lastname %>
+    </p>
+    <p>
+      <strong>Email:</strong>
+      <%= @empleado.email %>
+    </p>
+
+    <%= link_to 'Regresar', empleados_path, class: 'btn btn-primary btn-sm'   %>
+  </div>
+</div>

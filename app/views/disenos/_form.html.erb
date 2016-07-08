@@ -1,0 +1,34 @@
+<h1><%= name %> diseño</h1>
+<div class="well">
+<%= form_for (@diseno) do |f| %>
+    <% if @diseno.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@tamano.errors.count, "error") %> no es posible
+            guardar este diseño por que no se cumple con el formato siguiente:</h2>
+          <ul>
+            <% @diseno.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre, :class=>'form-control' , :placeholder=>'Escriba el nombre del diseño (Ej. Flores)' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :diseno %><br>
+      <%= f.file_field :diseno %>
+      <% if f.object.diseno? %>
+          <%= image_tag f.object.diseno.thumb.url %>
+          <%= f.label :eliminar_diseno %>
+          <%= f.check_box :remove_diseno %>
+      <% end %>
+    </div>
+
+    <p>
+      <%= f.submit 'Guardar Diseño', class: 'btn btn-success btn-sm' %>
+    </p>
+<% end %>
+  </div>

@@ -1,0 +1,30 @@
+<div class="container">
+<h1>Catalogo de Categorias</h1>
+  <div class="well">
+  <%= link_to 'Nueva categoria', new_category_path, class: 'btn btn-success btn-sm'   %>
+
+<% if !@category.blank? %>
+<table border="2"  class="table table-bordered">
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+  </tr>
+
+  <% @category.each do |c| %>
+      <tr>
+        <td><%= c.nombre %></td>
+        <td><%= c.descripcion %></td>
+        <td><%= link_to 'Ver', category_path(c), class: 'btn btn-info btn-sm' %></td>
+        <td><%= link_to 'Editar', edit_category_path(c), class: 'btn btn-warning btn-sm' %></td>
+        <td><%= link_to 'Borrar',category_path(c) , class: 'btn btn-danger btn-sm',
+                        method: :delete, data: { confirm: '¿Seguro que desea eliminar esta categoria?'} %></td>
+      </tr>
+  <% end %>
+</table>
+<% else %>
+    <br/>
+    <h3>No hay registros</h3>
+    <br/>
+<% end %>
+</div>
+</div>

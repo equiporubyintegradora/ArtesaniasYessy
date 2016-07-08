@@ -1,0 +1,29 @@
+<h1><%= name %> tamaño</h1>
+<div class="well">
+<%= form_for (@tamano) do |f| %>
+    <% if @tamano.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@tamano.errors.count, "error") %> no es posible
+            guardar este tamaño por que no se cumple con el formato siguiente:</h2>
+          <ul>
+            <% @tamano.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :tamano %><br>
+      <%= f.text_field :tamano %>
+    </p>
+
+    <p>
+      <%= f.label :descripcion %><br>
+      <%= f.text_area :descripcion %>
+    </p>
+
+    <p>
+      <%= f.submit 'Guardar Tamaño', class: 'btn btn-success btn-sm' %>
+    </p>
+<% end %>
+  </div>

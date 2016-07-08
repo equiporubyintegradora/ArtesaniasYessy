@@ -1,0 +1,97 @@
+<h1><%= name %> producto</h1>
+<div class="well-lg">
+  <%= form_for (@producto) do |f| %>
+      <% if @producto.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@producto.errors.count, "error") %> no es posible
+              guardar este producto por que no se cumple con el formato siguiente:</h2>
+            <ul>
+              <% @producto.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :producto %><br>
+        <%= f.text_field :producto, :class=>'form-control' , :placeholder=>'Escriba el nombre del producto (Ej. Rana)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :fotografia %><br>
+        <%= f.file_field :fotografia %>
+        <% if f.object.fotografia? %>
+            <%= image_tag f.object.fotografia.thumb.url %>
+            <%= f.label :eliminar_fotografia%>
+            <%= f.check_box :remove_fotografia %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :descripcion %><br>
+        <%= f.text_area :descripcion, :class=>'form-control', :cols=>'20', :rows=>'4', :placeholder=>'Escriba la descripcion del producto (Ej. Hermosa rana decorativa)' %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :tamano %><br />
+        <%= collection_select(:producto, :tamano, Tamano.all, :id_tamano, :tamano, {:prompt => 'Elija un Tamaño...'}, { :class => 'select', :selected => params[:id_tamano]}) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :diseno %><br />
+        <%if @producto.any?%>
+            <ul>
+              <%for p in @producto do%>
+                  <li>
+                    <%input_id = "user_group_ids_#{group.id}"%>
+                    <%=check_box_tag "user[group_ids][]", group.id, @user.group_ids.include?(group.id), :id => input_id%>
+                    <%=label_tag input_id, group.name%>
+                  </li>
+              <%end%>
+            </ul>
+        <%end%>
+        <%= collection_select(:producto, :diseno, Diseno.all, :id_diseno, :nombre, prompt: true, :class=>"form-control" )  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :precio %><br />
+        <%= f.text_field :precio, :class=>'form-control' , :placeholder=>'Escriba el precio del producto (Ej. 18.50)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :existencia %><br />
+        <%= f.text_field :existencia, :class=>'form-control' , :placeholder=>'Escriba la existencia actual del producto (Ej. 500)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :categoria %><br />
+        <%= collection_select(:producto, :categoria, Category.all, :id_categoria, :nombre, prompt: true, :class=>"form-control" )  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :preciomayoreo %><br />
+        <%= f.text_field :preciomayoreo, :class=>'form-control' , :placeholder=>'Escriba el precio de mayoreo del producto (Ej. 18.50)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :piezasmayoreo %><br />
+        <%= f.text_field :piezasmayoreo, :class=>'form-control' , :placeholder=>'Escriba la cantidad de piezas para aplicar el precio de mayoreo(Ej. 15)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :preciomenudeo%><br />
+        <%= f.text_field :preciomenudeo, :class=>'form-control' , :placeholder=>'Escriba el precio de menudeo del producto (Ej. 18.50)' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :piezasmenudeo %><br />
+        <%= f.text_field :piezasmenudeo, :class=>'form-control' , :placeholder=>'Escriba la cantidad de piezas para aplicar el precio de menudeo(Ej. 15)' %>
+      </div>
+
+
+      <p>
+        <%= f.submit 'Guardar Producto', class: 'btn btn-success btn-sm' %>
+      </p>
+  <% end %>
+</div>

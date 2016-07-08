@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Ver Producto</h1>
+  <div class="well">
+    <p>
+      <%= image_tag @producto.fotografia.thumb.url if @producto.fotografia.present? %>
+    </p>
+    <p>
+      <strong>Producto:</strong>
+      <%= @producto.producto %>
+    </p>
+    <p>
+      <strong>Descipcion:</strong>
+      <%= @producto.descripcion %>
+    </p>
+    <p>
+      <strong>Tamaño:</strong>
+      <%= @producto.tamano %>
+    </p>
+    <p>
+      <strong>Diseño:</strong>
+      <%= @producto.diseno %>
+    </p>
+    <p>
+    <p>
+      <strong>Precio:</strong>
+      <%= @producto.precio %>
+    </p>
+    <p>
+      <strong>Existencia:</strong>
+      <%= @producto.existencia %>
+    </p>
+    <p>
+      <strong>Categoria:</strong>
+      <%= @producto.categoria %>
+    </p>
+    <p>
+      <strong>Precio de Mayoreo:</strong>
+      <%= @producto.preciomayoreo %>
+    </p>
+    <p>
+      <strong>Piezas para aplicar precio de Mayoreo:</strong>
+      <%= @producto.piezasmayoreo %>
+    </p>
+    <p>
+      <strong>Precio de Menudeo:</strong>
+      <%= @producto.preciomenudeo %>
+    </p>
+    <p>
+      <strong>Piezas para aplicar precio de Menudeo:</strong>
+      <%= @producto.piezasmenudeo %>
+    </p>
+
+    <%= link_to 'Regresar', productos_path, class: 'btn btn-primary btn-sm'   %>
+    | <%= link_to 'Editar', edit_producto_path(@producto), class: 'btn btn-warning btn-sm'   %>
+  </div>
+</div>

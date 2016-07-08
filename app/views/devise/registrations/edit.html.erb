@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="well">
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :name, "Nombre(s)" %><br />
+      <%= f.text_field :name,  autocomplete: "off", :class => 'form-control'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lastname, "Apellido(s)" %><br />
+      <%= f.text_field :lastname,  autocomplete: "off", :class => 'form-control'  %>
+    </div>
+
+    <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, "Password"%> <i>(Deje el espacio en blanco si no desea modificar su password)</i><br />
+    <%= f.password_field :password, autocomplete: "off" , :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmacion de Password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, "Su Password actual" %> <i>(nesecitamos su password para confirmar sus cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off", :class => 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Cambiar sus datos",  :class => 'btn btn-success', :style => 'color: white' %>
+  </div>
+<% end %>
+
+<%= link_to "Regresar", :back,  :class => 'btn btn-primary', :style => 'color: white' %>
+      </div>
+    </div>
+  </div>
+</div>

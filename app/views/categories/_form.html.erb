@@ -1,0 +1,33 @@
+<h1><%= name %> categoria</h1>
+<div class="well">
+<%= form_for (@category),  :html => {:multipart => true} do |f| %>
+    <% if @category.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@category.errors.count, "errore") %>no es posible
+            guardar esta categoria por que no se cumple con el formato siguiente:</h2>
+          <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+      <div class="form-group">
+    <p>
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre , :class=>'form-control' , :placeholder=>'Escriba el nombre de la categoria(Ej. Rana)'%>
+    </p>
+      </div>
+
+      <div class="form-group">
+        <p>
+      <%= f.label :descripcion %><br>
+      <%= f.text_area :descripcion, :class=>'form-control' , :placeholder=>'Escriba la descripcion de la categoria(Ej. Esta es la categoria para las ranas)' %>
+    </p>
+      </div>
+
+    <p>
+      <%= f.submit 'Guardar Categoria', class: 'btn btn-success btn-sm'  %>
+    </p>
+<% end %>
+</div>

@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="panel panel-danger">
+    <div class="panel-heading">Datos del Cliente</div>
+    <div class="panel-body">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Nombre cliente:</strong>
+        <%= @cliente.nombre_cliente %>
+      </p>
+
+      <p>
+        <strong>Ap paterno:</strong>
+        <%= @cliente.ap_paterno %>
+      </p>
+
+      <p>
+        <strong>Ap materno:</strong>
+        <%= @cliente.ap_materno %>
+      </p>
+
+      <p>
+        <strong>Calle:</strong>
+        <%= @cliente.calle %>
+      </p>
+
+      <p>
+        <strong>Numero:</strong>
+        <%= @cliente.numero %>
+      </p>
+
+      <p>
+        <strong>Colonia:</strong>
+        <%= @cliente.colonia %>
+      </p>
+
+      <p>
+        <strong>Municipio:</strong>
+        <%= @cliente.municipio %>
+      </p>
+
+      <p>
+        <strong>Estado:</strong>
+        <%= @cliente.estado %>
+      </p>
+
+      <p>
+        <strong>Pais:</strong>
+        <%= @cliente.pais %>
+      </p>
+
+      <p>
+        <strong>Telefono:</strong>
+        <%= @cliente.telefono %>
+      </p>
+
+      <p>
+        <strong>Celular:</strong>
+        <%= @cliente.celular %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= @cliente.email %>
+      </p>
+
+      <%= link_to 'Editar Cliente', edit_cliente_path(@cliente), :class => 'btn btn-success glyphicon glyphicon-edit', :style => 'color: white' %>
+      <%= link_to 'Regresar al Listado de Clientes', clientes_path, :class => 'btn btn-warning glyphicon glyphicon-arrow-left', :style => 'color: white' %>
+    </div>
+  </div>
+</div>

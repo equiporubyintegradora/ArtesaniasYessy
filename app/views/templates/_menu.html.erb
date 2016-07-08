@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default" style="margin-:0px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">Artesanias Yessy</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="<%= root_path %>">Inicio <span class="sr-only">(current)</span></a></li>
+        <li><a href="<%= productos_path %>">Productos</a></li>
+        <li><a href="<%=categories_path %>">Categorias</a></li>
+        <li><a href="<%=tamanos_path %>">Tamaños</a></li>
+        <li><a href="<%=disenos_path %>">Diseños</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_empleado.nil? %>
+            <li><a href="<%= new_empleado_session_path %>">Ingreso</a></li>
+            <li><a href="<%= new_empleado_registration_path %>">Registro</a></li>
+        <% else %>
+            <li><a href="<%= edit_empleado_registration_path %>">Editar Mis Datos</a></li>
+            <li><a href="<%= destroy_empleado_session_path %>" data-method="delete">Salir</a></li>
+        <%end%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

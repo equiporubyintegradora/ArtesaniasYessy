@@ -1,6 +1,24 @@
+<div class="container">
 <% if empleado_signed_in?  %>
   <h1>Bienvenido/a:  <%=current_empleado.name%>   <%=current_empleado.lastname%></h1>
    <% else %>
-    <h1>Bienvenido/a </h1>
+    <h1>Bienvenido/a  extraño, por favor inicie sesion!</h1>
 <% end %>
-<p>Artesanias Yessy</p>
+  <div class="well">
+  <div id="slider">
+    <div ><%= image_tag "img1.jpg", :alt => "Imágen 1", :title => "Imágen 1"%></div>
+    <div><%= image_tag "img2.jpg", :alt => "Imágen 2", :title => "Imágen 2"%></div>
+    <div><%= image_tag "logoYessy.png", :alt => 'Yessy Artesanías', :title => 'Yessy Artesanías' %></div>
+  </div>
+ </div>
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('#slider div:gt(0)').hide();
+    setInterval(function () {
+      $('#slider div:first-child').fadeOut(1000)
+          .next('div').fadeIn(1000)
+          .end().appendTo('#slider');
+    }, 10000);
+  })
+</script>

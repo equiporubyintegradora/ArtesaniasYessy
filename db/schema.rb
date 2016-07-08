@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160706225429) do
     t.integer "numero",                     null: false
     t.string  "colonia",        limit: 30,  null: false
     t.string  "municipio",      limit: 30,  null: false
-    t.integer "estado",                     null: false
-    t.integer "pais",                       null: false
+    t.string  "estado",         limit: 30,  null: false
+    t.string  "pais",           limit: 30,  null: false
     t.string  "telefono",       limit: 12,  null: false
     t.string  "celular",        limit: 12,  null: false
     t.string  "email",          limit: 100, null: false
@@ -75,15 +75,6 @@ ActiveRecord::Schema.define(version: 20160706225429) do
   add_index "empleados", ["email"], name: "index_empleados_on_email", unique: true, using: :btree
   add_index "empleados", ["reset_password_token"], name: "index_empleados_on_reset_password_token", unique: true, using: :btree
 
-  create_table "estados", primary_key: "id_estado", force: :cascade do |t|
-    t.string  "estado", limit: 100, null: false
-    t.integer "pais",               null: false
-  end
-
-  create_table "paises", primary_key: "id_pais", force: :cascade do |t|
-    t.string "pais", limit: 100, null: false
-  end
-
   create_table "productos", primary_key: "id_producto", force: :cascade do |t|
     t.string  "fotografia",    limit: 255
     t.string  "producto",      limit: 50,                          null: false
@@ -113,11 +104,8 @@ ActiveRecord::Schema.define(version: 20160706225429) do
 
   add_foreign_key "categories_productos", "categories", column: "categoria", primary_key: "id_categoria", name: "categories_productos_categoria_fkey"
   add_foreign_key "categories_productos", "productos", column: "id_producto", primary_key: "id_producto", name: "categories_productos_id_producto_fkey"
-  add_foreign_key "clientes", "estados", column: "estado", primary_key: "id_estado", name: "clientes_estado_fkey"
-  add_foreign_key "clientes", "paises", column: "pais", primary_key: "id_pais", name: "clientes_pais_fkey"
   add_foreign_key "disenos_productos", "disenos", column: "diseno", primary_key: "id_diseno", name: "disenos_productos_diseno_fkey"
   add_foreign_key "disenos_productos", "productos", column: "id_producto", primary_key: "id_producto", name: "disenos_productos_id_producto_fkey"
-  add_foreign_key "estados", "paises", column: "pais", primary_key: "id_pais", name: "estados_pais_fkey"
   add_foreign_key "tamanos_productos", "productos", column: "id_producto", primary_key: "id_producto", name: "tamanos_productos_id_producto_fkey"
   add_foreign_key "tamanos_productos", "tamanos", column: "tamano", primary_key: "id_tamano", name: "tamanos_productos_tamano_fkey"
 end

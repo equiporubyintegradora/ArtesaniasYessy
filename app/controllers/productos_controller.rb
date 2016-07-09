@@ -55,7 +55,7 @@ class ProductosController < ApplicationController
 
   private
   def params_producto
-    params.require(:producto).permit(:fotografia, :producto, :descripcion, :tamano, :diseno, :precio, :existencia, :categoria, :preciomayoreo, :piezasmayoreo, :preciomenudeo, :piezasmenudeo)
+    params.require(:producto).permit(:fotografia, :producto, :descripcion, :tamano, :largo, :ancho, :alto, :diseno, :precio, :existencia, :categoria, :preciomayoreo, :piezasmayoreo, :preciomenudeo, :piezasmenudeo)
   end
 
 end

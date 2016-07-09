@@ -35,23 +35,28 @@
 
       <div class="field">
         <%= f.label :tamano %><br />
-        <%= collection_select(:producto, :tamano, Tamano.all, :id_tamano, :tamano, {:prompt => 'Elija un Tamaño...'}, { :class => 'select', :selected => params[:id_tamano]}) %>
+        <%= collection_select(:producto, :tamano, Tamano.all, :id, :tamano, {:prompt => 'Elija un Tamaño...'}, { :class => 'select', :selected => params[:id_tamano]}) %>
       </div>
 
       <div class="field">
+        <%= f.label :largo %><br />
+        <%= f.text_field :largo, :class=>'form-control' , :placeholder=>'Escriba el largo del producto (Ej. 18)'%>
+      </div>
+
+      <div class="field">
+        <%= f.label :ancho %><br />
+        <%= f.text_field :ancho, :class=>'form-control' , :placeholder=>'Escriba el largo del producto (Ej. 18)'%>
+      </div>
+
+      <div class="field">
+        <%= f.label :alto %><br />
+        <%= f.text_field :alto, :class=>'form-control' , :placeholder=>'Escriba el alto del producto (Ej. 20)'%>
+      </div>
+
+
+      <div class="field">
         <%= f.label :diseno %><br />
-        <%if @producto.any?%>
-            <ul>
-              <%for p in @producto do%>
-                  <li>
-                    <%input_id = "user_group_ids_#{group.id}"%>
-                    <%=check_box_tag "user[group_ids][]", group.id, @user.group_ids.include?(group.id), :id => input_id%>
-                    <%=label_tag input_id, group.name%>
-                  </li>
-              <%end%>
-            </ul>
-        <%end%>
-        <%= collection_select(:producto, :diseno, Diseno.all, :id_diseno, :nombre, prompt: true, :class=>"form-control" )  %>
+        <%= collection_select(:producto, :diseno, Diseno.all, :id, :nombre, prompt: true, :class=>"form-control" )  %>
       </div>
 
       <div class="field">
@@ -66,7 +71,7 @@
 
       <div class="field">
         <%= f.label :categoria %><br />
-        <%= collection_select(:producto, :categoria, Category.all, :id_categoria, :nombre, prompt: true, :class=>"form-control" )  %>
+        <%= collection_select(:producto, :categoria, Category.all, :id, :nombre, prompt: true, :class=>"form-control" )  %>
       </div>
 
       <div class="field">

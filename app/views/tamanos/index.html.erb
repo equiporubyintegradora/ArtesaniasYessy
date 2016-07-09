@@ -1,8 +1,9 @@
 <div class="container">
 <h1>Catalogo de Tamaños </h1>
   <div class="well">
-  <%= link_to 'Nuevo Tamaño', new_tamano_path, class: 'btn btn-success btn-sm'    %>
-
+    <% if empleado_signed_in?  %>
+      <%= link_to 'Nuevo Tamaño', new_tamano_path, class: 'btn btn-success btn-sm'    %>
+    <% end %>
 <% if !@tamano.blank? %>
 <table border="2" class="table table-bordered">
   <tr>
@@ -15,9 +16,12 @@
         <td><%= t.tamano %></td>
         <td><%= t.descripcion  %></td>
         <td><%= link_to 'Ver', tamano_path(t), class: 'btn btn-info btn-sm'%></td>
-        <td><%= link_to 'Modificar', edit_tamano_path(t),  class: 'btn btn-warning btn-sm' %></td>
-        <td><%= link_to 'Borrar', tamano_path(t), class: 'btn btn-danger btn-sm',
-                        method: :delete,  data: { confirm: '¿Seguro que desea eliminar este tamaño?' } %></td>      </tr>
+        <% if empleado_signed_in?  %>
+          <td><%= link_to 'Modificar', edit_tamano_path(t),  class: 'btn btn-warning btn-sm' %></td>
+          <td><%= link_to 'Borrar', tamano_path(t), class: 'btn btn-danger btn-sm',
+                        method: :delete,  data: { confirm: '¿Seguro que desea eliminar este tamaño?' } %></td>
+       <% end %>
+      </tr>
   <% end %>
 </table>
 <% else %>

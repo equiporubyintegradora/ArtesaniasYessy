@@ -1,7 +1,9 @@
 <div class="container">
 <h1>Catalogo de Diseños </h1>
   <div class="well">
-  <%= link_to 'Nuevo Diseño', new_diseno_path, class: 'btn btn-success btn-sm'  %>
+    <% if empleado_signed_in?  %>
+      <%= link_to 'Nuevo Diseño', new_diseno_path, class: 'btn btn-success btn-sm'  %>
+    <% end %>
 
 <% if !@diseno.blank? %>
     <table border="2" class="table table-bordered">
@@ -15,9 +17,12 @@
             <td><%= d.nombre %></td>
             <td> <%=image_tag d.diseno.thumb.url,  class:'img-responsive img-thumbnail' if d.diseno.present? %></td>
             <td><%= link_to 'Ver', diseno_path(d),  class: 'glyphicon glyphicon-eye-open btn btn-info btn-sm ' %></td>
-            <td><%= link_to 'Modificar', edit_diseno_path(d), class: 'btn btn-warning btn-sm' %></td>
-            <td><%= link_to 'Borrar', diseno_path(d), class: 'btn btn-danger btn-sm',
-                            method: :delete,  data: { confirm: '¿Seguro que desea eliminar este diseño?' } %></td>      </tr>
+            <% if empleado_signed_in?  %>
+              <td><%= link_to 'Modificar', edit_diseno_path(d), class: 'btn btn-warning btn-sm' %></td>
+              <td><%= link_to 'Borrar', diseno_path(d), class: 'btn btn-danger btn-sm',
+                            method: :delete,  data: { confirm: '¿Seguro que desea eliminar este diseño?' } %></td>
+             <% end %>
+                </tr>
       <% end %>
     </table>
 <% else %>

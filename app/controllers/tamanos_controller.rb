@@ -1,5 +1,6 @@
 class TamanosController < ApplicationController
   before_action :set_tamano, except: [:index, :new, :create]
+  before_action :authenticate_empleado!,  except: [:index, :show]
 
 
   def new

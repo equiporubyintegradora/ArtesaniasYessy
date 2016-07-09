@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
     before_action :set_category, except: [:index, :new, :create]
+    before_action :authenticate_empleado!,  except: [:index, :show]
+
     def new
     @category= Category.new
   end

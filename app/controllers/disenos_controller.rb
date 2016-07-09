@@ -1,5 +1,6 @@
 class DisenosController < ApplicationController
   before_action :set_disenos, except: [:index, :new, :create]
+  before_action :authenticate_empleado!,  except: [:index, :show]
 
 
   def new
